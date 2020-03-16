@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import { Card, CardGrid, Container, Header } from "./Elements";
 import Modal from './Modal';
 import Accordion from './Accordion';
@@ -13,8 +13,12 @@ import green from "./green.png";
 
 function App() {
   const [ value, setValue ] = useState(0)
-  const [isToggled, setToggle] = useState(false)
+  const [ isToggled, setToggle ] = useState(false)
   const [ isNavOpen, setIsNavOpen ] = useState(false)
+  const [ isCardActive, setIsCardActive ] = useState(true)
+
+  const x = useMotionValue(0)
+  const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0])
 
   return (
     <motion.div
@@ -54,14 +58,46 @@ function App() {
         </Modal>
         <Accordion title="The accordion" body="This is the body of the accordion" />
         <CardGrid>
-          <Card style={{ background: "var(--purp)" }}>
+          <Card 
+            whileHover={{scale: [1.0, 0.98, 1.02]}}
+            whileTap={{ background: "var(--red)" }}
+            onHoverEnd={() => console.log("hover end")}
+            style={{ background: "var(--purp)" }}
+          >
             <h3>Some card</h3>
             <img src={purp} />
           </Card>
-          <Card style={{ background: "var(--blue)" }}>
-            <h3>Some card</h3>
-            <img src={blue} />
-          </Card>
+          <AnimatePresence>
+            {isCardActive && (
+              <motion.div 
+                exit={{ height: 0, overflow: "hidden", opacity: 0 }}
+                transition={{ opacity: {
+                  duration: 0
+                }}}
+              >
+                <Card
+                  onDragEnd={(event, info) => {
+                    if (Math.abs(info.point.x) > 100) {
+                      setIsCardActive(false);
+                    }
+                  }}
+                  drag="x"
+                  dragConstraints={{
+                    left: 0,
+                    right: 0
+                  }}
+                  style={{ 
+                    x,
+                    opacity,
+                    background: "var(--blue)"
+                  }}
+                >
+                  <h3>Some card</h3>
+                  <img src={blue} />
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
           <Card style={{ background: "var(--black)" }}>
             <h3>Some card</h3>
             <img src={black} />
