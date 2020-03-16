@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardGrid, Container, Header } from "./Elements";
 import Modal from './Modal';
 import Accordion from './Accordion';
+import Nav from './Nav';
 import "./App.css";
 import Menu from "./Menu";
 import blue from "./blue.png";
@@ -13,6 +14,7 @@ import green from "./green.png";
 function App() {
   const [ value, setValue ] = useState(0)
   const [isToggled, setToggle] = useState(false)
+  const [ isNavOpen, setIsNavOpen ] = useState(false)
 
   return (
     <motion.div
@@ -27,7 +29,8 @@ function App() {
       }}
     >
       <Header>
-        <Menu />
+        <Menu onClick={() => setIsNavOpen(true)} />
+        <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}/>
         <h1>Header</h1>
       </Header>
       <Container>
@@ -49,7 +52,7 @@ function App() {
             <img src={purp} />
           </Card>
         </Modal>
-        <Accordion title="The accordion" body="this is the body" />
+        <Accordion title="The accordion" body="This is the body of the accordion" />
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
