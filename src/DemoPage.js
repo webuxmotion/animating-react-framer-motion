@@ -37,7 +37,7 @@ const DemoPage = () => {
       <Modal isToggled={isToggled} setToggle={setToggle}>
         <Card style={{ background: "var(--purp)" }}>
           <h3>Kiss You</h3>
-          <img src={purp} />
+          <img alt="Some pic" src={purp} />
         </Card>
       </Modal>
       <Accordion title="The accordion" body="This is the body of the accordion" />
@@ -49,7 +49,7 @@ const DemoPage = () => {
           style={{ background: "var(--purp)" }}
         >
           <h3>Some card</h3>
-          <img src={purp} />
+          <img alt="Some pic" src={purp} />
         </Card>
         <AnimatePresence>
           {isCardActive && (
@@ -77,18 +77,18 @@ const DemoPage = () => {
                 }}
               >
                 <h3>Some card</h3>
-                <img src={blue} />
+                <img alt="Some pic" src={blue} />
               </Card>
             </motion.div>
           )}
         </AnimatePresence>
         <Card style={{ background: "var(--black)" }}>
           <h3>Some card</h3>
-          <img src={black} />
+          <img alt="Some pic" src={black} />
         </Card>
         <Card style={{ background: "var(--green)" }}>
           <h3>Some card</h3>
-          <img src={green} />
+          <img alt="Some pic" src={green} />
         </Card>
       </CardGrid>
     </motion.div>

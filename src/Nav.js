@@ -55,7 +55,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
             variants={liVariants} 
             key={link}
           >
-            <a href="#">{link}</a>
+            <a href="/">{link}</a>
           </motion.li>
         ))}
       </motion.ul>

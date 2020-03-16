@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 import { Container, Header } from "./Elements";
 import Nav from './Nav';
@@ -12,6 +12,7 @@ import DemoPage from './DemoPage';
 
 function App() {
   const [ isNavOpen, setIsNavOpen ] = useState(false)
+  const location = useLocation()
 
   return (
     <motion.div
@@ -35,8 +36,8 @@ function App() {
       </Header>
       <Container>
         <h2>Super Cool</h2>
-        <AnimatePresence>
-          <Switch>
+        <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.pathname}>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/demo" component={DemoPage} />
