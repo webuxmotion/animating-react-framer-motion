@@ -10,13 +10,25 @@ import green from "./green.png";
 
 function App() {
   return (
-    <motion.div>
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: -100
+      }}
+      animate={{
+        opacity: 1,
+        y: 0
+      }}
+      transition={{
+        duration: 1
+      }}
+    >
       <Header>
         <Menu />
         <h1>Header</h1>
       </Header>
       <Container>
-        <motion.h2 animate={{scale: 2}}>Super Cool</motion.h2>
+        <h2>Super Cool</h2>
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
