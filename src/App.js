@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardGrid, Container, Header } from "./Elements";
 import Modal from './Modal';
+import Accordion from './Accordion';
 import "./App.css";
 import Menu from "./Menu";
 import blue from "./blue.png";
@@ -44,10 +45,11 @@ function App() {
         />
         <Modal isToggled={isToggled} setToggle={setToggle}>
           <Card style={{ background: "var(--purp)" }}>
-            <h3>Some card</h3>
+            <h3>Kiss You</h3>
             <img src={purp} />
           </Card>
         </Modal>
+        <Accordion title="The accordion" body="this is the body" />
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
