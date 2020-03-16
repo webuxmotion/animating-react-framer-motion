@@ -6,6 +6,7 @@ import Accordion from './Accordion';
 import Nav from './Nav';
 import "./App.css";
 import Menu from "./Menu";
+import Squares from "./Squares";
 import blue from "./blue.png";
 import purp from "./purp.png";
 import black from "./black.png";
@@ -38,6 +39,7 @@ function App() {
         <h1>Header</h1>
       </Header>
       <Container>
+        <Squares />
         <h2>Super Cool</h2>
         <button
           onClick={() => setToggle(true)}
