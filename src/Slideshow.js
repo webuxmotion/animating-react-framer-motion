@@ -60,7 +60,7 @@ const Slideshow = () => {
           left: 0,
           top: 0
         }}
-      />
+      >{COLORS[index]}</motion.div>
     </AnimatePresence>
     <div style={{ zIndex: 10, position: 'absolute' }}>
       <button onClick={() => paginate(-1)}>{"<"}</button>
